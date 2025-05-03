@@ -1,0 +1,22 @@
+# Ignorar configuración del entorno de Visual Studio
+.vs/
+
+# Ignorar configuraciones del usuario
+*.user
+*.suo
+
+# Ignorar carpetas de compilación
+bin/
+obj/
+
+# Ignorar archivos de base de datos
+*.mdf
+*.ldf
+*.bak
+*.db
+
+# Ignorar archivos temporales y de sistema
+*.log
+*.tmp
+Thumbs.db
+Desktop.ini
