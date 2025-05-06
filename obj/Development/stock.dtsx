@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{266523EA-967F-4A30-BAA3-53DD66468E76}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{37B447B3-D853-4CDA-A699-B6166678DB12}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,18 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{76199E3F-0FE4-4C3A-896E-CC4017CD2FBF}"
+      DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Initial Catalog=Intermedia;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -91,35 +103,350 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\stock"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{6A672729-C61E-4B0E-8124-F5BC2FE5DC8D}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="stock"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Tarea Flujo de datos"
+      DTS:refId="Package\Intermdias_Stock"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{672C8DDC-B45C-4589-A7DD-A3FB26C0774D}"
+      DTS:DTSID="{8EEB8BDA-9088-4EF7-8066-DD582C742649}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarea Flujo de datos">
+      DTS:ObjectName="Intermdias_Stock"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
           version="1">
           <components>
             <component
-              refId="Package\Tarea Flujo de datos\srt_sotck"
+              refId="Package\Intermdias_Stock\Intermedias_Stock"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Intermedias_Stock"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Intermedias_Stock]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Intermdias_Stock\Intermedias_Stock.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].Columns[03]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="03"
+                      externalMetadataColumnId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[03]"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[03]" />
+                    <inputColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="01 02 2002 04 20 26 p m "
+                      externalMetadataColumnId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[01 02 2002 04 20 26 p m ]" />
+                    <inputColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].Columns[71]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="71"
+                      externalMetadataColumnId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[71]"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[71]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[03]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="03" />
+                    <externalMetadataColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="01 02 2002 04 20 26 p m " />
+                    <externalMetadataColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[71]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="71" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Intermdias_Stock\Intermedias_Stock.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Intermdias_Stock\Intermedias_Stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\Intermedias_Stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Intermdias_Stock\Intermedias_Stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Intermdias_Stock\starying_Stock"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="starying_Stock"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[str_stock]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Intermdias_Stock\starying_Stock.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[03]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].ExternalColumns[03]"
+                      length="50"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[03]"
+                      name="03"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      length="50"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
+                      name="01 02 2002 04 20 26 p m "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[71]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].ExternalColumns[71]"
+                      length="50"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].Columns[71]"
+                      name="71"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].ExternalColumns[03]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="03" />
+                    <externalMetadataColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="01 02 2002 04 20 26 p m " />
+                    <externalMetadataColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB].ExternalColumns[71]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="71" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[03]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[03]"
+                      name="03" />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
+                      name="01 02 2002 04 20 26 p m " />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[71]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[71]"
+                      name="71" />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Intermdias_Stock.Paths[Salida de origen de OLE DB]"
+              endId="Package\Intermdias_Stock\Intermedias_Stock.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Intermdias_Stock\starying_Stock.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\staying_Stock"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{672C8DDC-B45C-4589-A7DD-A3FB26C0774D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="staying_Stock">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\staying_Stock\srt_sotck"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Origen de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
               description="Origen de archivo plano"
@@ -139,25 +466,25 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarea Flujo de datos\srt_sotck.Connections[FlatFileConnection]"
+                  refId="Package\staying_Stock\srt_sotck.Connections[FlatFileConnection]"
                   connectionManagerID="Package.ConnectionManagers[stock]"
                   connectionManagerRefId="Package.ConnectionManagers[stock]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano]"
+                  refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano]"
                   name="Salida de origen de archivo plano">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[03]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[03]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[03]"
+                      externalMetadataColumnId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[03]"
                       length="50"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[03]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[03]"
                       name="03"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -172,14 +499,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[01 02 2002 04 20 26 p m ]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[01 02 2002 04 20 26 p m ]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      externalMetadataColumnId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[01 02 2002 04 20 26 p m ]"
                       length="50"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[01 02 2002 04 20 26 p m ]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[01 02 2002 04 20 26 p m ]"
                       name="01 02 2002 04 20 26 p m "
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -194,14 +521,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[71]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[71]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[71]"
+                      externalMetadataColumnId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[71]"
                       length="50"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[71]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[71]"
                       name="71"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -219,19 +546,19 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[03]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[03]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="03" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[01 02 2002 04 20 26 p m ]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="01 02 2002 04 20 26 p m " />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[71]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].ExternalColumns[71]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -239,27 +566,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano]"
+                  refId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano]"
                   isErrorOut="true"
                   name="Salida de error de origen de archivo plano">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
                       codePage="1252"
                       dataType="text"
                       description="Columna de salida de error de origen de archivo plano"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
                       name="Columna de salida de error de origen de archivo plano" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      refId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -268,7 +595,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarea Flujo de datos\str_stock"
+              refId="Package\staying_Stock\str_stock"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Destino de OLE DB"
@@ -325,7 +652,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarea Flujo de datos\str_stock.Connections[OleDbConnection]"
+                  refId="Package\staying_Stock\str_stock.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
                   connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -333,53 +660,53 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB]"
+                  refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].Columns[03]"
+                      refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].Columns[03]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="03"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[03]"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[03]" />
+                      externalMetadataColumnId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[03]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[03]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
+                      refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].Columns[01 02 2002 04 20 26 p m ]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="01 02 2002 04 20 26 p m "
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[01 02 2002 04 20 26 p m ]" />
+                      externalMetadataColumnId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[01 02 2002 04 20 26 p m ]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].Columns[71]"
+                      refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].Columns[71]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="71"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[71]"
-                      lineageId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[71]" />
+                      externalMetadataColumnId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[71]"
+                      lineageId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano].Columns[71]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[03]"
+                      refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[03]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="03" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
+                      refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[01 02 2002 04 20 26 p m ]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="01 02 2002 04 20 26 p m " />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[71]"
+                      refId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB].ExternalColumns[71]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -389,22 +716,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarea Flujo de datos\str_stock.Outputs[Salida de error de destino de OLE DB]"
+                  refId="Package\staying_Stock\str_stock.Outputs[Salida de error de destino de OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB]">
+                  synchronousInputId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      refId="Package\staying_Stock\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\staying_Stock\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\staying_Stock\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\staying_Stock\str_stock.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -415,15 +742,40 @@
           </components>
           <paths>
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de archivo plano]"
-              endId="Package\Tarea Flujo de datos\str_stock.Inputs[Entrada de destino de OLE DB]"
+              refId="Package\staying_Stock.Paths[Salida de origen de archivo plano]"
+              endId="Package\staying_Stock\str_stock.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de archivo plano"
-              startId="Package\Tarea Flujo de datos\srt_sotck.Outputs[Salida de origen de archivo plano]" />
+              startId="Package\staying_Stock\srt_sotck.Outputs[Salida de origen de archivo plano]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\stock"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{6A672729-C61E-4B0E-8124-F5BC2FE5DC8D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="stock"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{686D442A-1F40-4D19-AF1D-9A8B695E2A81}"
+      DTS:From="Package\staying_Stock"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Intermdias_Stock" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -435,33 +787,59 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="102.4,41.6"
           Id="Package\stock"
-          TopLeft="448.833309110669,141.566665720476" />
+          TopLeft="450.499975686273,24.5666665340794" />
         <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Tarea Flujo de datos"
-          TopLeft="95.5,95.5" />
+          Size="143.2,41.6"
+          Id="Package\staying_Stock"
+          TopLeft="426.333315257398,127.566666443679" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Intermdias_Stock"
+          TopLeft="417.999977461995,213.499998553594" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="497.566646359696,169.166666443679">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.3333321099149"
+              Start="0,0"
+              End="0,36.8333321099149">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.8333321099149" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarea Flujo de datos">
+    design-time-name="Package\staying_Stock">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="120,41.6"
-          Id="Package\Tarea Flujo de datos\srt_sotck"
+          Id="Package\staying_Stock\srt_sotck"
           TopLeft="475.499992996454,113.499998390675" />
         <NodeLayout
           Size="120,41.6"
-          Id="Package\Tarea Flujo de datos\str_stock"
+          Id="Package\staying_Stock\str_stock"
           TopLeft="428.999993607402,292.99999563396" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de archivo plano]"
+          Id="Package\staying_Stock.Paths[Salida de origen de archivo plano]"
           TopLeft="535.499992996454,155.099998390675">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -498,7 +876,71 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\str_stock">
+    design-time-name="Package\staying_Stock\str_stock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Intermdias_Stock">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Intermdias_Stock\starying_Stock"
+          TopLeft="429.666643491223,59.2333329596784" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Intermdias_Stock\Intermedias_Stock"
+          TopLeft="417.999979101122,194.966665557755" />
+        <EdgeLayout
+          Id="Package\Intermdias_Stock.Paths[Salida de origen de OLE DB]"
+          TopLeft="501.633311296173,100.833332959678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94.133332598077"
+              Start="0,0"
+              End="0,86.633332598077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.633332598077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Intermdias_Stock\starying_Stock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Intermdias_Stock\Intermedias_Stock">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

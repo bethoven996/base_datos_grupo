@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/6/2025 12:28:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-K4EILBVQ"
+  DTS:CreatorName="LAPTOP-K4EILBVQ\Beto"
+  DTS:DTSID="{7DCB1C6A-D875-4860-BD65-07DABCD7CDB0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{4CD05110-EC15-420F-83C4-64B6ABE10F50}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0B6FE662-528A-4FF8-A5E1-C4FA3D0481F4}"
+      DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Initial Catalog=Intermedia;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F9E3375A-5FAF-4388-A867-81004B1B9982}"
+      DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.starying">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Initial Catalog=starying;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borrar"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{4E28F55A-010E-49F3-8215-3D9038157E69}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borrar"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\cargar Ventas HIstoricas a intermedias"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{131090BA-0C3A-4888-B74E-069DAE62345D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="cargar Ventas HIstoricas a intermedias"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="intermedias Ventas Historicas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[intermedias Ventas Historicas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[id]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[billing_id]"
+                      cachedDataType="i4"
+                      cachedName="billing_id"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[billing_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[billing_id]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[date]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[date]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[customer_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[employee_id]"
+                      cachedDataType="i4"
+                      cachedName="employee_id"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[employee_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[product_id]"
+                      cachedDataType="i4"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[product_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[quantity]"
+                      cachedDataType="i4"
+                      cachedName="quantity"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[quantity]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[quantity]" />
+                    <inputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[region]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[billing_id]"
+                      dataType="i4"
+                      name="billing_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[date]"
+                      dataType="dbTimeStamp"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[employee_id]"
+                      dataType="i4"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[quantity]"
+                      dataType="i4"
+                      name="quantity" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="region" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="starying Ventas Historicas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[sty_ventas_historicas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[billing_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[billing_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[billing_id]"
+                      name="billing_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[date]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[customer_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[employee_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[employee_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[employee_id]"
+                      name="employee_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[product_id]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[quantity]"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[quantity]"
+                      name="quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[region]"
+                      length="45"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[billing_id]"
+                      dataType="i4"
+                      name="billing_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[date]"
+                      dataType="dbTimeStamp"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[employee_id]"
+                      dataType="i4"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[quantity]"
+                      dataType="i4"
+                      name="quantity" />
+                    <externalMetadataColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[billing_id]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[billing_id]"
+                      name="billing_id" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[employee_id]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[employee_id]"
+                      name="employee_id" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[quantity]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[quantity]"
+                      name="quantity" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\cargar Ventas HIstoricas a intermedias.Paths[Salida de origen de OLE DB]"
+              endId="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="107.2,41.6"
+          Id="Package\Borrar"
+          TopLeft="507.16663925681,8.9666666425599" />
+        <NodeLayout
+          Size="257.6,41.6"
+          Id="Package\cargar Ventas HIstoricas a intermedias"
+          TopLeft="447.999977461995,123.899999385277" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\cargar Ventas HIstoricas a intermedias">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas"
+          TopLeft="514.666638847028,80.8999994756778" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas"
+          TopLeft="518.833306925166,214.033332091835" />
+        <EdgeLayout
+          Id="Package\cargar Ventas HIstoricas a intermedias.Paths[Salida de origen de OLE DB]"
+          TopLeft="613.866638847028,122.499999475678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.9666680781377,91.533332616157"
+              Start="0,0"
+              End="12.9666680781377,84.033332616157">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.7666663080785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.7666663080785"
+                    Point2="0,45.7666663080785"
+                    Point3="4,45.7666663080785" />
+                  <mssgle:LineSegment
+                    End="8.96666807813767,45.7666663080785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.96666807813767,45.7666663080785"
+                    Point2="12.9666680781377,45.7666663080785"
+                    Point3="12.9666680781377,49.7666663080785" />
+                  <mssgle:LineSegment
+                    End="12.9666680781377,84.033332616157" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar Ventas HIstoricas a intermedias\starying Ventas Historicas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar Ventas HIstoricas a intermedias\intermedias Ventas Historicas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

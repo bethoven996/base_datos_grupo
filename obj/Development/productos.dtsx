@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="productos"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{AE12DCF2-E2A1-4FAA-A370-52943B67C7A9}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{A203F389-3947-46AC-A406-08854DB4C67A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,18 @@
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
           DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Beto\Desktop\base de datos\Employee.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E24BB3DA-AB90-4A55-A2A3-9B299BDD521A}"
+      DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Initial Catalog=Intermedia;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -90,6 +102,336 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\cargar tabla intermedia productos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{35907AC5-147C-4C9E-8504-AC7744B4EE9A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="cargar tabla intermedia productos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\cargar tabla intermedia productos\Intermedia_Productos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Intermedia_Productos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Intermedia_Productos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].Columns[id_producto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id_producto"
+                      externalMetadataColumnId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_producto]"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[id_producto]" />
+                    <inputColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].Columns[desc_producto                   ]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="desc_producto                   "
+                      externalMetadataColumnId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].ExternalColumns[desc_producto                   ]"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[desc_producto                   ]" />
+                    <inputColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].Columns[presentasion_prodcuto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="presentasion_prodcuto"
+                      externalMetadataColumnId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].ExternalColumns[presentasion_prodcuto]"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[presentasion_prodcuto]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id_producto" />
+                    <externalMetadataColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].ExternalColumns[desc_producto                   ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="desc_producto                   " />
+                    <externalMetadataColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB].ExternalColumns[presentasion_prodcuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="presentasion_prodcuto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cargar tabla intermedia productos\Intermedia_Productos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Intermedia_Productos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cargar tabla intermedia productos\Intermedia_Productos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\cargar tabla intermedia productos\Productos starying"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Productos starying"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[sty_productos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cargar tabla intermedia productos\Productos starying.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[id_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].ExternalColumns[id_producto]"
+                      length="50"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[id_producto]"
+                      name="id_producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[desc_producto                   ]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].ExternalColumns[desc_producto                   ]"
+                      length="50"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[desc_producto                   ]"
+                      name="desc_producto                   "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[presentasion_prodcuto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].ExternalColumns[presentasion_prodcuto]"
+                      length="50"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].Columns[presentasion_prodcuto]"
+                      name="presentasion_prodcuto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].ExternalColumns[id_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id_producto" />
+                    <externalMetadataColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].ExternalColumns[desc_producto                   ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="desc_producto                   " />
+                    <externalMetadataColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB].ExternalColumns[presentasion_prodcuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="presentasion_prodcuto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[id_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[id_producto]"
+                      name="id_producto" />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[desc_producto                   ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[desc_producto                   ]"
+                      name="desc_producto                   " />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[presentasion_prodcuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[presentasion_prodcuto]"
+                      name="presentasion_prodcuto" />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\cargar tabla intermedia productos.Paths[Salida de origen de OLE DB]"
+              endId="Package\cargar tabla intermedia productos\Intermedia_Productos.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\cargar tabla intermedia productos\Productos starying.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Tarea Ejecutar SQL"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -435,6 +777,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción"
       DTS:To="Package\Tarea Flujo de datos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C5FB5917-04BE-4650-8050-2937428BC2E3}"
+      DTS:From="Package\Tarea Flujo de datos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\cargar tabla intermedia productos" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -447,15 +797,15 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Tarea Flujo de datos"
-          TopLeft="392.999978827935,165.833332218395" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Tarea Ejecutar SQL"
           TopLeft="388.833312388924,44.4999997287989" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Tarea Flujo de datos"
+          TopLeft="392.999978827935,165.833332218395" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="476.916645608429,86.0999997287989">
@@ -478,6 +828,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="232.8,50.4"
+          Id="Package\cargar tabla intermedia productos"
+          TopLeft="370.49998005728,242.099998354713" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="483.349979442607,207.433332218395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.6666661363182"
+              Start="0,0"
+              End="0,27.1666661363182">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1666661363182" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -485,15 +861,15 @@
     design-time-name="Package\Tarea Flujo de datos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="124,41.6"
-          Id="Package\Tarea Flujo de datos\productos"
-          TopLeft="364.499995097518,93.7857134171895" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="143.2,41.6"
           Id="Package\Tarea Flujo de datos\sty_productos"
           TopLeft="355.499995678663,226.214283319456" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\Tarea Flujo de datos\productos"
+          TopLeft="364.499995097518,93.7857134171895" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de origen de archivo plano]"
           TopLeft="426.799995388091,135.385713417189">
@@ -513,7 +889,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -521,6 +899,70 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Tarea Flujo de datos\sty_productos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\cargar tabla intermedia productos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\cargar tabla intermedia productos\Productos starying"
+          TopLeft="477.166640895937,74.833332851198" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\cargar tabla intermedia productos\Intermedia_Productos"
+          TopLeft="470.499976232649,203.633332164155" />
+        <EdgeLayout
+          Id="Package\cargar tabla intermedia productos.Paths[Salida de origen de OLE DB]"
+          TopLeft="560.033308564293,116.433332851198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.1999993129571"
+              Start="0,0"
+              End="0,79.6999993129571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.6999993129571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar tabla intermedia productos\Productos starying">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar tabla intermedia productos\Intermedia_Productos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
