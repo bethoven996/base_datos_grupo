@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{7397DAE2-9411-4EED-AFFD-4B06B4551153}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{F3544050-5512-46DD-9946-8FF27DAECFF1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -56,6 +56,36 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Borrar Intermedias"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{90EAE382-ABC0-4C42-8934-140311AFBA78}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borrar Intermedias"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\carga a sty(HACER)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{443C4BB1-487B-4ABE-A10B-3E1DA619BA67}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="carga a sty(HACER)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -415,6 +445,32 @@
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{97FB70AF-B6F6-4C9C-B11C-C655463EB977}"
+      DTS:From="Package\Borrar"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\carga a sty(HACER)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{ACEC4E99-67B0-4C5B-B443-562300F7BD76}"
+      DTS:From="Package\carga a sty(HACER)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Borrar Intermedias" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B27171DF-2551-48C9-861C-9AD3F937E927}"
+      DTS:From="Package\Borrar Intermedias"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\cargar intermedias Discount MySql" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -426,7 +482,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="107.2,41.6"
           Id="Package\Borrar"
@@ -434,7 +490,117 @@
         <NodeLayout
           Size="239.2,41.6"
           Id="Package\cargar intermedias Discount MySql"
-          TopLeft="455.499977052213,150.766665865117" />
+          TopLeft="482.999975549679,266.033331730234" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\carga a sty(HACER)"
+          TopLeft="517.999971998236,111.233332598077" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="570.766638710434,67.8999998553594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.2333332878018,43.3333327427175"
+              Start="0,0"
+              End="33.2333332878018,35.8333327427175">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.6666663713588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.6666663713588"
+                    Point2="0,21.6666663713588"
+                    Point3="4,21.6666663713588" />
+                  <mssgle:LineSegment
+                    End="29.2333332878018,21.6666663713588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.2333332878018,21.6666663713588"
+                    Point2="33.2333332878018,21.6666663713588"
+                    Point3="33.2333332878018,25.6666663713588" />
+                  <mssgle:LineSegment
+                    End="33.2333332878018,35.8333327427175" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Borrar Intermedias"
+          TopLeft="507.166640895937,179.366665666236" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="603.999971998236,152.833332598077">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.4333311022986,26.533333068159"
+              Start="0,0"
+              End="-14.4333311022986,19.033333068159">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.26666653407948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.26666653407948"
+                    Point2="0,13.2666665340795"
+                    Point3="-4,13.2666665340795" />
+                  <mssgle:LineSegment
+                    End="-10.4333311022986,13.2666665340795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.4333311022986,13.2666665340795"
+                    Point2="-14.4333311022986,13.2666665340795"
+                    Point3="-14.4333311022986,17.2666665340795" />
+                  <mssgle:LineSegment
+                    End="-14.4333311022986,19.033333068159" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="589.566640895937,220.966665666236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.0333346537423,45.0666660639978"
+              Start="0,0"
+              End="13.0333346537423,37.5666660639978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5333330319989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5333330319989"
+                    Point2="0,22.5333330319989"
+                    Point3="4,22.5333330319989" />
+                  <mssgle:LineSegment
+                    End="9.03333465374226,22.5333330319989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.03333465374226,22.5333330319989"
+                    Point2="13.0333346537423,22.5333330319989"
+                    Point3="13.0333346537423,26.5333330319989" />
+                  <mssgle:LineSegment
+                    End="13.0333346537423,37.5666660639978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -444,13 +610,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="188,41.6"
-          Id="Package\cargar intermedias Discount MySql\starying discount MySql"
-          TopLeft="431.333310066827,34.9666664617592" />
-        <NodeLayout
           Size="208,41.6"
           Id="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql"
           TopLeft="427.999978554747,184.566665630076" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\cargar intermedias Discount MySql\starying discount MySql"
+          TopLeft="431.333310066827,34.9666664617592" />
         <EdgeLayout
           Id="Package\cargar intermedias Discount MySql.Paths[Salida de origen de OLE DB]"
           TopLeft="528.666644310787,76.5666664617592">
@@ -477,7 +643,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\cargar intermedias Discount MySql\starying discount MySql">
+    design-time-name="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -490,7 +656,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql">
+    design-time-name="Package\cargar intermedias Discount MySql\starying discount MySql">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -1,25 +1,25 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/6/2025 12:17:47 PM"
+  DTS:CreationDate="5/6/2025 12:21:17 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="LAPTOP-K4EILBVQ"
   DTS:CreatorName="LAPTOP-K4EILBVQ\Beto"
-  DTS:DTSID="{1B5C1891-512E-42FF-AB80-D66CE69F8151}"
+  DTS:DTSID="{98568A15-22E2-45E4-8DB0-D73907676635}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5685.0"
   DTS:LocaleID="3082"
-  DTS:ObjectName="PrecioMySql"
+  DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{54AF6227-ABEB-4B07-BE7E-02BE77D85603}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{F3544050-5512-46DD-9946-8FF27DAECFF1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{C6026240-E03E-4947-B858-CA6B1BF7E60A}"
+      DTS:DTSID="{92EDB220-6D19-448D-959E-EAE20454B9DD}"
       DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -31,7 +31,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{D26C3E1F-95BC-49F5-A9EC-E0127DA04B33}"
+      DTS:DTSID="{485F3B8B-EE20-432C-9988-33D641FEC479}"
       DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.starying">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -47,7 +47,7 @@
       DTS:refId="Package\Borrar"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{F6A8CC16-04D7-4204-86D2-32711288A5F7}"
+      DTS:DTSID="{A1F8FEE5-35EE-49DA-AC16-0FC755EFC511}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Borrar"
@@ -59,13 +59,13 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Borrar intermedia"
+      DTS:refId="Package\Borrar Intermedias"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{99ABCE84-45AC-490A-B4D6-B35E7B497B5C}"
+      DTS:DTSID="{90EAE382-ABC0-4C42-8934-140311AFBA78}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Borrar intermedia"
+      DTS:ObjectName="Borrar Intermedias"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -74,13 +74,13 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\carga precios a sty (HACER)"
+      DTS:refId="Package\carga a sty(HACER)"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{5773086F-CD2B-4DFE-A6CD-2C5BEE6E64C8}"
+      DTS:DTSID="{443C4BB1-487B-4ABE-A10B-3E1DA619BA67}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="carga precios a sty (HACER)"
+      DTS:ObjectName="carga a sty(HACER)"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -89,13 +89,13 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\cargar a intermedias"
+      DTS:refId="Package\cargar intermedias Discount MySql"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{28F27FF6-EA8E-4AF1-B390-5D5AC55753CE}"
+      DTS:DTSID="{27972B4A-38D8-4464-B1F1-743EAF139EC9}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="cargar a intermedias"
+      DTS:ObjectName="cargar intermedias Discount MySql"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -103,11 +103,11 @@
           version="1">
           <components>
             <component
-              refId="Package\cargar a intermedias\intermedia Prince MySql"
+              refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Destino de OLE DB"
-              name="intermedia Prince MySql"
+              name="intermedia_Discount_MySql"
               usesDispositions="true"
               version="4">
               <properties>
@@ -118,7 +118,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[intermedia Prince MySql]</property>
+                  name="OpenRowset">[intermedia_Discount_MySql]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -160,7 +160,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\cargar a intermedias\intermedia Prince MySql.Connections[OleDbConnection]"
+                  refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
                   connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -168,66 +168,86 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB]"
+                  refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].Columns[PRODUCT_ID]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].Columns[DISCOUNT_ID]"
                       cachedDataType="i4"
-                      cachedName="PRODUCT_ID"
-                      externalMetadataColumnId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[PRODUCT_ID]"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[PRODUCT_ID]" />
+                      cachedName="DISCOUNT_ID"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[DISCOUNT_ID]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[DISCOUNT_ID]" />
                     <inputColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].Columns[DATE]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].Columns[FROM]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="DATE"
-                      externalMetadataColumnId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[DATE]"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[DATE]" />
+                      cachedName="FROM"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[FROM]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[FROM]" />
                     <inputColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].Columns[PRICE]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].Columns[UNTIL]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UNTIL"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[UNTIL]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[UNTIL]" />
+                    <inputColumn
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].Columns[TOTAL_BILLING]"
                       cachedDataType="r8"
-                      cachedName="PRICE"
-                      externalMetadataColumnId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[PRICE]"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[PRICE]" />
+                      cachedName="TOTAL_BILLING"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[TOTAL_BILLING]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[TOTAL_BILLING]" />
+                    <inputColumn
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].Columns[PERCENTAGE]"
+                      cachedDataType="i2"
+                      cachedName="PERCENTAGE"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[PERCENTAGE]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[PERCENTAGE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[PRODUCT_ID]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[DISCOUNT_ID]"
                       dataType="i4"
-                      name="PRODUCT_ID" />
+                      name="DISCOUNT_ID" />
                     <externalMetadataColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[DATE]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[FROM]"
                       dataType="dbTimeStamp"
-                      name="DATE" />
+                      name="FROM" />
                     <externalMetadataColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[PRICE]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[UNTIL]"
+                      dataType="dbTimeStamp"
+                      name="UNTIL" />
+                    <externalMetadataColumn
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[TOTAL_BILLING]"
                       dataType="r8"
-                      name="PRICE" />
+                      name="TOTAL_BILLING" />
+                    <externalMetadataColumn
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB].ExternalColumns[PERCENTAGE]"
+                      dataType="i2"
+                      name="PERCENTAGE" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\cargar a intermedias\intermedia Prince MySql.Outputs[Salida de error de destino de OLE DB]"
+                  refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Outputs[Salida de error de destino de OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB]">
+                  synchronousInputId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\cargar a intermedias\intermedia Prince MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\intermedia Prince MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\cargar a intermedias\intermedia Prince MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -236,11 +256,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\cargar a intermedias\starying Price MySql"
+              refId="Package\cargar intermedias Discount MySql\starying discount MySql"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
               description="Origen de OLE DB"
-              name="starying Price MySql"
+              name="starying discount MySql"
               usesDispositions="true"
               version="7">
               <properties>
@@ -251,7 +271,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[starying_Price_Mysql]</property>
+                  name="OpenRowset">[dbo].[stayin discount My Sql]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -285,7 +305,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\cargar a intermedias\starying Price MySql.Connections[OleDbConnection]"
+                  refId="Package\cargar intermedias Discount MySql\starying discount MySql.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
                   connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.starying]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -293,83 +313,119 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB]"
+                  refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB]"
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[PRODUCT_ID]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[DISCOUNT_ID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[PRODUCT_ID]"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[PRODUCT_ID]"
-                      name="PRODUCT_ID"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[DISCOUNT_ID]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[DISCOUNT_ID]"
+                      name="DISCOUNT_ID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[DATE]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[FROM]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[DATE]"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[DATE]"
-                      name="DATE"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[FROM]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[FROM]"
+                      name="FROM"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[PRICE]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[UNTIL]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[UNTIL]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[UNTIL]"
+                      name="UNTIL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[TOTAL_BILLING]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[PRICE]"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].Columns[PRICE]"
-                      name="PRICE"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[TOTAL_BILLING]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[TOTAL_BILLING]"
+                      name="TOTAL_BILLING"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[PERCENTAGE]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[PERCENTAGE]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].Columns[PERCENTAGE]"
+                      name="PERCENTAGE"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[PRODUCT_ID]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[DISCOUNT_ID]"
                       dataType="i4"
-                      name="PRODUCT_ID" />
+                      name="DISCOUNT_ID" />
                     <externalMetadataColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[DATE]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[FROM]"
                       dataType="dbTimeStamp"
-                      name="DATE" />
+                      name="FROM" />
                     <externalMetadataColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[PRICE]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[UNTIL]"
+                      dataType="dbTimeStamp"
+                      name="UNTIL" />
+                    <externalMetadataColumn
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[TOTAL_BILLING]"
                       dataType="r8"
-                      name="PRICE" />
+                      name="TOTAL_BILLING" />
+                    <externalMetadataColumn
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB].ExternalColumns[PERCENTAGE]"
+                      dataType="i2"
+                      name="PERCENTAGE" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB]"
+                  refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB]"
                   isErrorOut="true"
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[PRODUCT_ID]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[DISCOUNT_ID]"
                       dataType="i4"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[PRODUCT_ID]"
-                      name="PRODUCT_ID" />
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[DISCOUNT_ID]"
+                      name="DISCOUNT_ID" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[DATE]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[FROM]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[DATE]"
-                      name="DATE" />
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[FROM]"
+                      name="FROM" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[PRICE]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[UNTIL]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[UNTIL]"
+                      name="UNTIL" />
+                    <outputColumn
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[TOTAL_BILLING]"
                       dataType="r8"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[PRICE]"
-                      name="PRICE" />
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[TOTAL_BILLING]"
+                      name="TOTAL_BILLING" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[PERCENTAGE]"
+                      dataType="i2"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[PERCENTAGE]"
+                      name="PERCENTAGE" />
+                    <outputColumn
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -380,10 +436,10 @@
           </components>
           <paths>
             <path
-              refId="Package\cargar a intermedias.Paths[Salida de origen de OLE DB]"
-              endId="Package\cargar a intermedias\intermedia Prince MySql.Inputs[Entrada de destino de OLE DB]"
+              refId="Package\cargar intermedias Discount MySql.Paths[Salida de origen de OLE DB]"
+              endId="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de OLE DB"
-              startId="Package\cargar a intermedias\starying Price MySql.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\cargar intermedias Discount MySql\starying discount MySql.Outputs[Salida de origen de OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -393,27 +449,27 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
       DTS:CreationName=""
-      DTS:DTSID="{675ED080-A7E1-4A76-A135-B10F169F5ED5}"
+      DTS:DTSID="{97FB70AF-B6F6-4C9C-B11C-C655463EB977}"
       DTS:From="Package\Borrar"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción"
-      DTS:To="Package\carga precios a sty (HACER)" />
+      DTS:To="Package\carga a sty(HACER)" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
-      DTS:DTSID="{6614587F-D91E-498E-9335-F7CEFAD17CD6}"
-      DTS:From="Package\carga precios a sty (HACER)"
+      DTS:DTSID="{ACEC4E99-67B0-4C5B-B443-562300F7BD76}"
+      DTS:From="Package\carga a sty(HACER)"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
-      DTS:To="Package\Borrar intermedia" />
+      DTS:To="Package\Borrar Intermedias" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
       DTS:CreationName=""
-      DTS:DTSID="{5AFB7867-BEEF-4DA2-87C8-4506198A85DD}"
-      DTS:From="Package\Borrar intermedia"
+      DTS:DTSID="{B27171DF-2551-48C9-861C-9AD3F937E927}"
+      DTS:From="Package\Borrar Intermedias"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
-      DTS:To="Package\cargar a intermedias" />
+      DTS:To="Package\cargar intermedias Discount MySql" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -430,41 +486,41 @@
         <NodeLayout
           Size="107.2,41.6"
           Id="Package\Borrar"
-          TopLeft="469.666642944847,31.1666666968001" />
+          TopLeft="517.166638710434,26.2999998553594" />
         <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\cargar a intermedias"
-          TopLeft="473.833307744729,313.166664527191" />
+          Size="239.2,41.6"
+          Id="Package\cargar intermedias Discount MySql"
+          TopLeft="482.999975549679,266.033331730234" />
         <NodeLayout
-          Size="211.2,41.6"
-          Id="Package\carga precios a sty (HACER)"
-          TopLeft="444.666642671659,138.099999077916" />
+          Size="172,41.6"
+          Id="Package\carga a sty(HACER)"
+          TopLeft="517.999971998236,111.233332598077" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="523.266642944847,72.7666666968001">
+          TopLeft="570.766638710434,67.8999998553594">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="26.999999726812,65.3333323811161"
+              EndConnector="33.2333332878018,43.3333327427175"
               Start="0,0"
-              End="26.999999726812,57.8333323811161">
+              End="33.2333332878018,35.8333327427175">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.666666190558" />
+                    End="0,17.6666663713588" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.666666190558"
-                    Point2="0,32.666666190558"
-                    Point3="4,32.666666190558" />
+                    Point1="0,17.6666663713588"
+                    Point2="0,21.6666663713588"
+                    Point3="4,21.6666663713588" />
                   <mssgle:LineSegment
-                    End="22.999999726812,32.666666190558" />
+                    End="29.2333332878018,21.6666663713588" />
                   <mssgle:CubicBezierSegment
-                    Point1="22.999999726812,32.666666190558"
-                    Point2="26.999999726812,32.666666190558"
-                    Point3="26.999999726812,36.666666190558" />
+                    Point1="29.2333332878018,21.6666663713588"
+                    Point2="33.2333332878018,21.6666663713588"
+                    Point3="33.2333332878018,25.6666663713588" />
                   <mssgle:LineSegment
-                    End="26.999999726812,57.8333323811161" />
+                    End="33.2333332878018,35.8333327427175" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -474,23 +530,35 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Borrar intermedia"
-          TopLeft="477.999975822867,224.433332019514" />
+          Size="164.8,41.6"
+          Id="Package\Borrar Intermedias"
+          TopLeft="507.166640895937,179.366665666236" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="553.733309247263,179.699999077916">
+          TopLeft="603.999971998236,152.833332598077">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.7333329415983"
+              EndConnector="-14.4333311022986,26.533333068159"
               Start="0,0"
-              End="0,37.2333329415983">
+              End="-14.4333311022986,19.033333068159">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.2333329415983" />
+                    End="0,9.26666653407948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.26666653407948"
+                    Point2="0,13.2666665340795"
+                    Point3="-4,13.2666665340795" />
+                  <mssgle:LineSegment
+                    End="-10.4333311022986,13.2666665340795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.4333311022986,13.2666665340795"
+                    Point2="-14.4333311022986,13.2666665340795"
+                    Point3="-14.4333311022986,17.2666665340795" />
+                  <mssgle:LineSegment
+                    End="-14.4333311022986,19.033333068159" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -501,18 +569,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="558.716641783798,266.033332019514">
+          TopLeft="589.566640895937,220.966665666236">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47.1333325076764"
+              EndConnector="13.0333346537423,45.0666660639978"
               Start="0,0"
-              End="0,39.6333325076764">
+              End="13.0333346537423,37.5666660639978">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.6333325076764" />
+                    End="0,18.5333330319989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5333330319989"
+                    Point2="0,22.5333330319989"
+                    Point3="4,22.5333330319989" />
+                  <mssgle:LineSegment
+                    End="9.03333465374226,22.5333330319989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.03333465374226,22.5333330319989"
+                    Point2="13.0333346537423,22.5333330319989"
+                    Point3="13.0333346537423,26.5333330319989" />
+                  <mssgle:LineSegment
+                    End="13.0333346537423,37.5666660639978" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -525,32 +605,32 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\cargar a intermedias">
+    design-time-name="Package\cargar intermedias Discount MySql">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\cargar a intermedias\starying Price MySql"
-          TopLeft="458.833308564293,37.566666443679" />
+          Size="208,41.6"
+          Id="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql"
+          TopLeft="427.999978554747,184.566665630076" />
         <NodeLayout
-          Size="191.2,41.6"
-          Id="Package\cargar a intermedias\intermedia Prince MySql"
-          TopLeft="447.166644174193,169.833332399196" />
+          Size="188,41.6"
+          Id="Package\cargar intermedias Discount MySql\starying discount MySql"
+          TopLeft="431.333310066827,34.9666664617592" />
         <EdgeLayout
-          Id="Package\cargar a intermedias.Paths[Salida de origen de OLE DB]"
-          TopLeft="543.999976369243,79.166666443679">
+          Id="Package\cargar intermedias Discount MySql.Paths[Salida de origen de OLE DB]"
+          TopLeft="528.666644310787,76.5666664617592">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,90.666665955517"
+              EndConnector="0,107.999999168316"
               Start="0,0"
-              End="0,83.166665955517">
+              End="0,100.499999168316">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,83.166665955517" />
+                    End="0,100.499999168316" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -563,7 +643,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\cargar a intermedias\intermedia Prince MySql">
+    design-time-name="Package\cargar intermedias Discount MySql\intermedia_Discount_MySql">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -576,7 +656,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\cargar a intermedias\starying Price MySql">
+    design-time-name="Package\cargar intermedias Discount MySql\starying discount MySql">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
