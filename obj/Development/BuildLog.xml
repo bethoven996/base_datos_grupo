@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>base_datos_grupo</Name>
-    <LastWriteTime>2025-05-12T17:17:24.122262Z</LastWriteTime>
+    <LastWriteTime>2025-06-05T17:04:24.0737914Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>productos.dtsx</Name>
-      <LastWriteTime>2025-05-12T17:17:23.99761Z</LastWriteTime>
+      <LastWriteTime>2025-05-12T17:20:03.9061825Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,12 +23,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Cliente.dtsx</Name>
-      <LastWriteTime>2025-05-08T21:21:32.9232171Z</LastWriteTime>
+      <LastWriteTime>2025-06-06T17:04:01.3171601Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Empleados.dtsx</Name>
-      <LastWriteTime>2025-05-08T21:28:02.6572881Z</LastWriteTime>
+      <LastWriteTime>2025-06-05T17:04:23.9943538Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -38,7 +38,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Carga_ventas.dtsx</Name>
-      <LastWriteTime>2025-05-08T21:28:04.4142342Z</LastWriteTime>
+      <LastWriteTime>2025-06-06T15:48:54.9900212Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>

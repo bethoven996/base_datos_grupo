@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Cliente"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{D5E8C0ED-FDF7-4C77-86D3-26EAC0FF3ECD}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{E99D74AF-EBE7-480B-864B-AAED2AA51D8B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,30 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DF6F71A3-CAA5-4C61-8D2A-E72D13FF76B3}"
+      DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Initial Catalog=Datawarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Cliente-{DF6F71A3-CAA5-4C61-8D2A-E72D13FF76B3}LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F81F556E-0768-4C23-82C2-D6B7942AB206}"
+      DTS:ObjectName="LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-K4EILBVQ\SQLEXPRESS;Initial Catalog=Datawarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Cliente-{F81F556E-0768-4C23-82C2-D6B7942AB206}LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse 1;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -55,6 +79,1139 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Actualizar DataW"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{9C86E1D4-1271-4BB1-BA77-4EAAADD5B680}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Actualizar DataW"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Actualizar DataW\Comando de OLE DB"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Clientes] SET [BIRTH_DATE] = ?,[CITY] = ?,[FULL_NAME] = ?,[STATE] = ?,[Tipo_cliente] = ?,[ZIPCODE] = ? WHERE [CUSTOMER_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizar DataW\Comando de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[BIRTH_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BIRTH_DATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[CITY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CITY"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CITY]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[CUSTOMER_ID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMER_ID"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[FULL_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FULL_NAME"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[STATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[STATE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Tipo_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="Tipo_cliente"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Tipo_cliente]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[ZIPCODE]"
+                      cachedDataType="i8"
+                      cachedName="ZIPCODE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="17"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="i8"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Actualizar DataW\Comando de OLE DB.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Actualizar DataW\Comando de OLE DB 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Clientes] SET [BIRTH_DATE] = ?,[CITY] = ?,[FULL_NAME] = ?,[STATE] = ?,[Tipo_cliente] = ?,[ZIPCODE] = ? WHERE [CUSTOMER_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizar DataW\Comando de OLE DB 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[BIRTH_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BIRTH_DATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[CITY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CITY"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CITY]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[CUSTOMER_ID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMER_ID"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[FULL_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FULL_NAME"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[STATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[STATE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[Tipo_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="Tipo_cliente"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Tipo_cliente]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[ZIPCODE]"
+                      cachedDataType="i8"
+                      cachedName="ZIPCODE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="17"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="i8"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Actualizar DataW\Comando de OLE DB 1.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Actualizar DataW\Dimensión de variación lenta"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Dimensión de variación lenta;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;3"
+              description="Actualiza una dimensión del almacenamiento de datos de SQL Server Analysis Services. Actualiza los registros de dimensión existentes e inserta los registros de dimensión que faltan. Por ejemplo, se actualiza la tabla DimProduct de la base de datos OLAP AdventureWorksDW con datos procedentes de la tabla Products de la base de datos OLTP AdventureWorks."
+              name="Dimensión de variación lenta"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SELECT utilizada para crear un conjunto de filas de esquema."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [BIRTH_DATE], [CITY], [CUSTOMER_ID], [FULL_NAME], [STATE], [Tipo_cliente], [ZIPCODE] FROM [dbo].[Dim_Clientes]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la cláusula WHERE de la instrucción SELECT que selecciona la fila actual de entre filas con claves empresariales idénticas."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las actualizaciones de atributos históricos se dirigen a la salida de transformación para actualizaciones de atributos variables."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se produce un error de transformación cuando las columnas con atributos fijos contienen cambios."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de columna para el miembro deducido."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se detectan las actualizaciones de miembros deducidos."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se produce un error de transformación cuando se produce un error de búsqueda de un registro existente."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica que todas las filas de la entrada sean nuevas o que la transformación detecte el tipo de cambio."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  description="Define la conexión que se debe usar para búsquedas en la tabla de dimensiones"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]"
+                  name="Entrada de dimensión de variación lenta">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[BIRTH_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BIRTH_DATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[BIRTH_DATE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[CITY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CITY"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[CITY]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[CUSTOMER_ID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMER_ID"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[CUSTOMER_ID]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[FULL_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FULL_NAME"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[FULL_NAME]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[STATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[STATE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[STATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[Tipo_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="Tipo_cliente"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Tipo_cliente]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Tipo_cliente]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[ZIPCODE]"
+                      cachedDataType="i8"
+                      cachedName="ZIPCODE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[ZIPCODE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[BIRTH_DATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="BIRTH_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[CITY]"
+                      dataType="wstr"
+                      length="255"
+                      name="CITY" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[CUSTOMER_ID]"
+                      dataType="i4"
+                      name="CUSTOMER_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[FULL_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="FULL_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[STATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="STATE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Tipo_cliente]"
+                      dataType="wstr"
+                      length="17"
+                      name="Tipo_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[ZIPCODE]"
+                      dataType="i8"
+                      name="ZIPCODE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida sin cambios]"
+                  description="Filas sin cambios"
+                  exclusionGroup="1"
+                  name="Salida sin cambios"
+                  synchronousInputId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Nueva salida]"
+                  description="Nuevas filas"
+                  exclusionGroup="1"
+                  name="Nueva salida"
+                  synchronousInputId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida de atributo fijo]"
+                  description="Filas con cambios en columnas etiquetadas FixedAttribute"
+                  exclusionGroup="1"
+                  name="Salida de atributo fijo"
+                  synchronousInputId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida de actualizaciones de atributos variables]"
+                  description="Estas filas contienen información nueva para cambios de columnas ChangingAttribute (tipo 1)"
+                  exclusionGroup="1"
+                  name="Salida de actualizaciones de atributos variables"
+                  synchronousInputId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida de inserciones de atributos históricos]"
+                  description="Los cambios de HistoricalAttribute (tipo 2) crean estas nuevas filas"
+                  exclusionGroup="2"
+                  name="Salida de inserciones de atributos históricos"
+                  synchronousInputId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida de actualizaciones de miembros deducidos]"
+                  description="Información para actualizar fila de dimensión inicial sin rellenar"
+                  exclusionGroup="1"
+                  name="Salida de actualizaciones de miembros deducidos"
+                  synchronousInputId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Actualizar DataW\Insertar destino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Insertar destino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Dim_Clientes]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizar DataW\Insertar destino.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Datawarehouse]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[CUSTOMER_ID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMER_ID"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[CUSTOMER_ID]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[FULL_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FULL_NAME"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[FULL_NAME]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[BIRTH_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BIRTH_DATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[BIRTH_DATE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[CITY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CITY"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[CITY]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CITY]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[STATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STATE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[STATE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[STATE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[ZIPCODE]"
+                      cachedDataType="i8"
+                      cachedName="ZIPCODE"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[ZIPCODE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]" />
+                    <inputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[Tipo_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="Tipo_cliente"
+                      externalMetadataColumnId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Tipo_cliente]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Tipo_cliente]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[CLIENTE_KEY]"
+                      dataType="i4"
+                      name="CLIENTE_KEY" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[CUSTOMER_ID]"
+                      dataType="i4"
+                      name="CUSTOMER_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[FULL_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="FULL_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[BIRTH_DATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="BIRTH_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[CITY]"
+                      dataType="wstr"
+                      length="255"
+                      name="CITY" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[STATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="STATE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[ZIPCODE]"
+                      dataType="i8"
+                      name="ZIPCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Tipo_cliente]"
+                      dataType="wstr"
+                      length="17"
+                      name="Tipo_cliente" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Actualizar DataW\Insertar destino.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Actualizar DataW\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Clientes _intermedias]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizar DataW\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-K4EILBVQ\SQLEXPRESS.Intermedia]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CUSTOMER_ID]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]"
+                      name="CUSTOMER_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[FULL_NAME]"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]"
+                      name="FULL_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[BIRTH_DATE]"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]"
+                      name="BIRTH_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CITY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CITY]"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CITY]"
+                      name="CITY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[STATE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[STATE]"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[STATE]"
+                      name="STATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ZIPCODE]"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]"
+                      name="ZIPCODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Tipo_cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Tipo_cliente]"
+                      length="17"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Tipo_cliente]"
+                      name="Tipo_cliente"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CUSTOMER_ID]"
+                      dataType="i4"
+                      name="CUSTOMER_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[FULL_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="FULL_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[BIRTH_DATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="BIRTH_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CITY]"
+                      dataType="wstr"
+                      length="255"
+                      name="CITY" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[STATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="STATE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ZIPCODE]"
+                      dataType="i8"
+                      name="ZIPCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Tipo_cliente]"
+                      dataType="wstr"
+                      length="17"
+                      name="Tipo_cliente" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CUSTOMER_ID]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CUSTOMER_ID]"
+                      name="CUSTOMER_ID" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[FULL_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[FULL_NAME]"
+                      name="FULL_NAME" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[BIRTH_DATE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[BIRTH_DATE]"
+                      name="BIRTH_DATE" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CITY]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CITY]"
+                      name="CITY" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[STATE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[STATE]"
+                      name="STATE" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ZIPCODE]"
+                      dataType="i8"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ZIPCODE]"
+                      name="ZIPCODE" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Tipo_cliente]"
+                      dataType="wstr"
+                      length="17"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Tipo_cliente]"
+                      name="Tipo_cliente" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Actualizar DataW.Paths[Nueva salida]"
+              endId="Package\Actualizar DataW\Insertar destino.Inputs[Entrada de destino de OLE DB]"
+              name="Nueva salida"
+              startId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Nueva salida]" />
+            <path
+              refId="Package\Actualizar DataW.Paths[Salida de actualizaciones de atributos variables]"
+              endId="Package\Actualizar DataW\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de actualizaciones de atributos variables"
+              startId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida de actualizaciones de atributos variables]" />
+            <path
+              refId="Package\Actualizar DataW.Paths[Salida de actualizaciones de miembros deducidos]"
+              endId="Package\Actualizar DataW\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de actualizaciones de miembros deducidos"
+              startId="Package\Actualizar DataW\Dimensión de variación lenta.Outputs[Salida de actualizaciones de miembros deducidos]" />
+            <path
+              refId="Package\Actualizar DataW.Paths[Salida de origen de OLE DB]"
+              endId="Package\Actualizar DataW\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Actualizar DataW\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Borrar DIm"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{E90491F7-F266-4DB0-BBA2-3DC62D5AB878}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borrar DIm"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DF6F71A3-CAA5-4C61-8D2A-E72D13FF76B3}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Datawarehouse].[dbo].[Dim_Clientes]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Borrar intermedia"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -183,13 +1340,6 @@ ORDER BY cr.CUSTOMER_ID;</property>
                       externalMetadataColumnId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].ExternalColumns[FULL_NAME]"
                       lineageId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[FULL_NAME]" />
                     <inputColumn
-                      refId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].Columns[BIRTH_DATE]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="BIRTH_DATE"
-                      externalMetadataColumnId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].ExternalColumns[BIRTH_DATE]"
-                      lineageId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BIRTH_DATE]" />
-                    <inputColumn
                       refId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].Columns[CITY]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -216,6 +1366,12 @@ ORDER BY cr.CUSTOMER_ID;</property>
                       cachedName="Tipo_cliente"
                       externalMetadataColumnId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].ExternalColumns[Tipo_cliente]"
                       lineageId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Tipo_cliente]" />
+                    <inputColumn
+                      refId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].Columns[Fecha_nac]"
+                      cachedDataType="date"
+                      cachedName="Fecha_nac"
+                      externalMetadataColumnId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].ExternalColumns[BIRTH_DATE]"
+                      lineageId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Fecha_nac]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -230,7 +1386,8 @@ ORDER BY cr.CUSTOMER_ID;</property>
                       name="FULL_NAME" />
                     <externalMetadataColumn
                       refId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].ExternalColumns[BIRTH_DATE]"
-                      dataType="dbDate"
+                      dataType="wstr"
+                      length="255"
                       name="BIRTH_DATE" />
                     <externalMetadataColumn
                       refId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB].ExternalColumns[CITY]"
@@ -305,28 +1462,26 @@ ORDER BY cr.CUSTOMER_ID;</property>
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    CUSTOMER_ID,
-    FULL_NAME,
-    BIRTH_DATE,
-    CITY,
-    STATE,
-    ZIPCODE
-FROM [starying].[dbo].[Customer_W]
-WHERE BIRTH_DATE NOT LIKE '%[^0-9/-]%'  -- solo números, guiones o barras
-  AND TRY_CONVERT(DATE, BIRTH_DATE) IS NOT NULL
-ORDER BY BIRTH_DATE;
-
-
-SELECT 
-    CUSTOMER_ID,
-    FULL_NAME,
-    BIRTH_DATE,
-    CITY,
-    STATE,
-    ZIPCODE
-FROM [starying].[dbo].[Customer_W]
-WHERE TRY_CONVERT(DATE, BIRTH_DATE) IS NULL
-ORDER BY BIRTH_DATE;</property>
+    cr.CUSTOMER_ID,
+    cr.FULL_NAME,
+    CASE 
+        WHEN TRY_PARSE(cr.BIRTH_DATE AS DATE USING 'en-US') IS NOT NULL 
+            THEN TRY_PARSE(cr.BIRTH_DATE AS DATE USING 'en-US')
+        WHEN TRY_PARSE(
+            REPLACE(REPLACE(REPLACE(REPLACE(cr.BIRTH_DATE, '*', ''), ' ', ''), '-', ''), '/', '') 
+            AS DATE USING 'en-US'
+        ) IS NOT NULL 
+            THEN TRY_PARSE(
+                REPLACE(REPLACE(REPLACE(REPLACE(cr.BIRTH_DATE, '*', ''), ' ', ''), '-', ''), '/', '') 
+                AS DATE USING 'en-US'
+            )
+        ELSE NULL
+    END AS BIRTH_DATE,
+    cr.CITY,
+    cr.STATE,
+    cr.ZIPCODE
+FROM [starying].[dbo].[Customer_W] cr
+ORDER BY cr.CUSTOMER_ID;</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -434,8 +1589,7 @@ ORDER BY BIRTH_DATE;</property>
                       name="FULL_NAME" />
                     <externalMetadataColumn
                       refId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].ExternalColumns[BIRTH_DATE]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="dbDate"
                       name="BIRTH_DATE" />
                     <externalMetadataColumn
                       refId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].ExternalColumns[CITY]"
@@ -471,8 +1625,7 @@ ORDER BY BIRTH_DATE;</property>
                       name="FULL_NAME" />
                     <outputColumn
                       refId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de error de origen de OLE DB].Columns[BIRTH_DATE]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="dbDate"
                       lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de error de origen de OLE DB].Columns[BIRTH_DATE]"
                       name="BIRTH_DATE" />
                     <outputColumn
@@ -534,28 +1687,15 @@ ORDER BY BIRTH_DATE;</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    CUSTOMER_ID,
-    FULL_NAME,
-    BIRTH_DATE,
-    CITY,
-    STATE,
-    ZIPCODE
-FROM [starying].[dbo].[staying_Customer_R]
-WHERE BIRTH_DATE NOT LIKE '%[^0-9/-]%'  -- solo números, guiones o barras
-  AND TRY_CONVERT(DATE, BIRTH_DATE) IS NOT NULL
-ORDER BY BIRTH_DATE;
-
-SELECT 
-    CUSTOMER_ID,
-    FULL_NAME,
-    BIRTH_DATE,
-    CITY,
-    STATE,
-    ZIPCODE
-FROM [starying].[dbo].[staying_Customer_R]
-WHERE TRY_CONVERT(DATE, BIRTH_DATE) IS NULL
-ORDER BY BIRTH_DATE;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP (1000) [CUSTOMER_ID]
+      ,[FULL_NAME]
+      ,[BIRTH_DATE]
+      ,[CITY]
+      ,[STATE]
+      ,[ZIPCODE]
+    FROM [starying].[dbo].[staying_Customer_R]
+WHERE BIRTH_DATE NOT LIKE '%*%'
+ORDER BY BIRTH_DATE</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -750,6 +1890,14 @@ ORDER BY BIRTH_DATE;</property>
                   refId="Package\cargar clientes en intermdias\tipo_cliente_mayorista.Inputs[Entrada de columna derivada]"
                   description="Entrada en la transformación Columna derivada"
                   name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cargar clientes en intermdias\tipo_cliente_mayorista.Inputs[Entrada de columna derivada].Columns[BIRTH_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BIRTH_DATE"
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]" />
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -782,6 +1930,28 @@ ORDER BY BIRTH_DATE;</property>
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
                           name="FriendlyExpression">"Cliente Mayorista"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\cargar clientes en intermdias\tipo_cliente_mayorista.Outputs[Salida de columna derivada].Columns[Fecha_nac]"
+                      dataType="date"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\cargar clientes en intermdias\tipo_cliente_mayorista.Outputs[Salida de columna derivada].Columns[Fecha_nac]"
+                      name="Fecha_nac"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_DATE)#{Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DATE)BIRTH_DATE</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -824,6 +1994,14 @@ ORDER BY BIRTH_DATE;</property>
                   refId="Package\cargar clientes en intermdias\Tipo_cliente_minorista.Inputs[Entrada de columna derivada]"
                   description="Entrada en la transformación Columna derivada"
                   name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cargar clientes en intermdias\Tipo_cliente_minorista.Inputs[Entrada de columna derivada].Columns[BIRTH_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BIRTH_DATE"
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]" />
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -856,6 +2034,28 @@ ORDER BY BIRTH_DATE;</property>
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
                           name="FriendlyExpression">"Cliente Minorista"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\cargar clientes en intermdias\Tipo_cliente_minorista.Outputs[Salida de columna derivada].Columns[Fecha_nac]"
+                      dataType="date"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\cargar clientes en intermdias\Tipo_cliente_minorista.Outputs[Salida de columna derivada].Columns[Fecha_nac]"
+                      name="Fecha_nac"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_DATE)#{Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DATE)BIRTH_DATE</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -902,7 +2102,7 @@ ORDER BY BIRTH_DATE;</property>
                       refId="Package\cargar clientes en intermdias\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[CUSTOMER_ID]"
                       cachedDataType="i4"
                       cachedName="CUSTOMER_ID"
-                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]">
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]">
                       <properties>
                         <property
                           containsID="true"
@@ -916,7 +2116,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="FULL_NAME"
-                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]">
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]">
                       <properties>
                         <property
                           containsID="true"
@@ -930,7 +2130,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="BIRTH_DATE"
-                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]">
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]">
                       <properties>
                         <property
                           containsID="true"
@@ -944,7 +2144,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="CITY"
-                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[CITY]">
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[CITY]">
                       <properties>
                         <property
                           containsID="true"
@@ -958,7 +2158,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="STATE"
-                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[STATE]">
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[STATE]">
                       <properties>
                         <property
                           containsID="true"
@@ -971,7 +2171,7 @@ ORDER BY BIRTH_DATE;</property>
                       refId="Package\cargar clientes en intermdias\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[ZIPCODE]"
                       cachedDataType="i8"
                       cachedName="ZIPCODE"
-                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]">
+                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]">
                       <properties>
                         <property
                           containsID="true"
@@ -994,6 +2194,19 @@ ORDER BY BIRTH_DATE;</property>
                           name="OutputColumnLineageID">#{Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Tipo_cliente]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\cargar clientes en intermdias\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[Fecha_nac]"
+                      cachedDataType="date"
+                      cachedName="Fecha_nac"
+                      lineageId="Package\cargar clientes en intermdias\tipo_cliente_mayorista.Outputs[Salida de columna derivada].Columns[Fecha_nac]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Fecha_nac]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1006,7 +2219,7 @@ ORDER BY BIRTH_DATE;</property>
                       refId="Package\cargar clientes en intermdias\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[CUSTOMER_ID]"
                       cachedDataType="i4"
                       cachedName="CUSTOMER_ID"
-                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]">
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[CUSTOMER_ID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1020,7 +2233,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="FULL_NAME"
-                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]">
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[FULL_NAME]">
                       <properties>
                         <property
                           containsID="true"
@@ -1034,7 +2247,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="BIRTH_DATE"
-                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]">
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[BIRTH_DATE]">
                       <properties>
                         <property
                           containsID="true"
@@ -1048,7 +2261,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="CITY"
-                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[CITY]">
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[CITY]">
                       <properties>
                         <property
                           containsID="true"
@@ -1062,7 +2275,7 @@ ORDER BY BIRTH_DATE;</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="STATE"
-                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[STATE]">
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[STATE]">
                       <properties>
                         <property
                           containsID="true"
@@ -1075,7 +2288,7 @@ ORDER BY BIRTH_DATE;</property>
                       refId="Package\cargar clientes en intermdias\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[ZIPCODE]"
                       cachedDataType="i8"
                       cachedName="ZIPCODE"
-                      lineageId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]">
+                      lineageId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB].Columns[ZIPCODE]">
                       <properties>
                         <property
                           containsID="true"
@@ -1096,6 +2309,19 @@ ORDER BY BIRTH_DATE;</property>
                           dataType="System.Int32"
                           description="Id. de linaje de columna de salida"
                           name="OutputColumnLineageID">#{Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Tipo_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\cargar clientes en intermdias\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[Fecha_nac]"
+                      cachedDataType="date"
+                      cachedName="Fecha_nac"
+                      lineageId="Package\cargar clientes en intermdias\Tipo_cliente_minorista.Outputs[Salida de columna derivada].Columns[Fecha_nac]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Fecha_nac]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1154,6 +2380,11 @@ ORDER BY BIRTH_DATE;</property>
                       length="17"
                       lineageId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Tipo_cliente]"
                       name="Tipo_cliente" />
+                    <outputColumn
+                      refId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Fecha_nac]"
+                      dataType="date"
+                      lineageId="Package\cargar clientes en intermdias\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Fecha_nac]"
+                      name="Fecha_nac" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1175,12 +2406,12 @@ ORDER BY BIRTH_DATE;</property>
               refId="Package\cargar clientes en intermdias.Paths[Salida de origen de OLE DB]"
               endId="Package\cargar clientes en intermdias\tipo_cliente_mayorista.Inputs[Entrada de columna derivada]"
               name="Salida de origen de OLE DB"
-              startId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\cargar clientes en intermdias.Paths[Salida de origen de OLE DB1]"
               endId="Package\cargar clientes en intermdias\Tipo_cliente_minorista.Inputs[Entrada de columna derivada]"
               name="Salida de origen de OLE DB"
-              startId="Package\cargar clientes en intermdias\stying_customer_W.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\cargar clientes en intermdias\sty_customer_R.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\cargar clientes en intermdias.Paths[Salida de Unión de todo 1]"
               endId="Package\cargar clientes en intermdias\Clientes _intermedias.Inputs[Entrada de destino de OLE DB]"
@@ -2138,6 +3369,22 @@ ORDER BY BIRTH_DATE;</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
       DTS:To="Package\cargar clientes en intermdias" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B8A6E19F-63FF-4054-84A6-A624B79094C8}"
+      DTS:From="Package\cargar clientes en intermdias"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\Borrar DIm" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{B6C92689-D423-4098-AD41-1C17C0D482F6}"
+      DTS:From="Package\Borrar DIm"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\Actualizar DataW" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -2150,49 +3397,45 @@ ORDER BY BIRTH_DATE;</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Actualizar DataW"
+          TopLeft="578.833302007783,131.166665792796" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Borrar DIm"
+          TopLeft="808.333289167949,114.399999204477" />
         <NodeLayout
           Size="158.4,41.6"
           Id="Package\Borrar intermedia"
-          TopLeft="691.333295861054,173.633332164155" />
+          TopLeft="524.666638300652,32.3666664798391" />
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\cargar clientes en intermdias"
-          TopLeft="370.49998005728,277.633331440952" />
+          TopLeft="762.166625324225,27.1666665159993" />
         <NodeLayout
           Size="196,41.6"
           Id="Package\cargar clientes en staying"
-          TopLeft="365.499983608723,101.899999746879" />
+          TopLeft="258.833322770066,31.700000235041" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\cliente borrar"
-          TopLeft="677.999963256221,46.2333330500789" />
+          TopLeft="62.166663570536,34.9666664617592" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="463.499983608723,143.499999746879">
+          TopLeft="454.833322770066,52.8333333574401">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="307.033312252331,30.1333324172764"
+              EndConnector="69.8333155305863,0"
               Start="0,0"
-              End="307.033312252331,22.6333324172764">
+              End="62.3333155305863,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.0666662086382" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.0666662086382"
-                    Point2="0,15.0666662086382"
-                    Point3="4,15.0666662086382" />
-                  <mssgle:LineSegment
-                    End="303.033312252331,15.0666662086382" />
-                  <mssgle:CubicBezierSegment
-                    Point1="303.033312252331,15.0666662086382"
-                    Point2="307.033312252331,15.0666662086382"
-                    Point3="307.033312252331,19.0666662086382" />
-                  <mssgle:LineSegment
-                    End="307.033312252331,22.6333324172764" />
+                    End="62.3333155305863,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2203,30 +3446,18 @@ ORDER BY BIRTH_DATE;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="677.999963256221,67.0333330500789">
+          TopLeft="201.366663570536,54.1333333484001">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-116.499979647498,55.6666666967999"
+              EndConnector="57.4666591995299,0"
               Start="0,0"
-              End="-108.999979647498,55.6666666967999">
+              End="49.9666591995299,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-54.2499898237492,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-54.2499898237492,0"
-                    Point2="-58.2499898237492,0"
-                    Point3="-58.2499898237492,4" />
-                  <mssgle:LineSegment
-                    End="-58.2499898237492,51.6666666967999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-58.2499898237492,51.6666666967999"
-                    Point2="-58.2499898237492,55.6666666967999"
-                    Point3="-62.2499898237492,55.6666666967999" />
-                  <mssgle:LineSegment
-                    End="-108.999979647498,55.6666666967999" />
+                    End="49.9666591995299,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2237,30 +3468,74 @@ ORDER BY BIRTH_DATE;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="770.533295861054,215.233332164155">
+          TopLeft="683.066638300652,50.5666664979192">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-294.433315803774,62.3999992767968"
+              EndConnector="79.099987023573,0"
               Start="0,0"
-              End="-294.433315803774,54.8999992767968">
+              End="71.599987023573,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.1999996383984" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.1999996383984"
-                    Point2="0,31.1999996383984"
-                    Point3="-4,31.1999996383984" />
+                    End="71.599987023573,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="870.249957246087,68.7666665159993">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.6333326884777"
+              Start="0,0"
+              End="0,38.1333326884777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-290.433315803774,31.1999996383984" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-290.433315803774,31.1999996383984"
-                    Point2="-294.433315803774,31.1999996383984"
-                    Point3="-294.433315803774,35.1999996383984" />
+                    End="0,38.1333326884777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="808.333289167949,135.199999204477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.0999871601665,16.7666665883192"
+              Start="0,0"
+              End="-63.5999871601665,16.7666665883192">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-294.433315803774,54.8999992767968" />
+                    End="-31.5499935800833,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.5499935800833,0"
+                    Point2="-35.5499935800833,0"
+                    Point3="-35.5499935800833,4" />
+                  <mssgle:LineSegment
+                    End="-35.5499935800833,12.7666665883192" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.5499935800833,12.7666665883192"
+                    Point2="-35.5499935800833,16.7666665883192"
+                    Point3="-39.5499935800833,16.7666665883192" />
+                  <mssgle:LineSegment
+                    End="-63.5999871601665,16.7666665883192" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2273,6 +3548,165 @@ ORDER BY BIRTH_DATE;</property>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Actualizar DataW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Actualizar DataW\Origen de OLE DB"
+          TopLeft="223.3,5.49999999999984" />
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\Actualizar DataW\Dimensión de variación lenta"
+          TopLeft="199.7,107.1" />
+        <EdgeLayout
+          Id="Package\Actualizar DataW.Paths[Salida de origen de OLE DB]"
+          TopLeft="305.7,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Actualizar DataW\Insertar destino"
+          TopLeft="5.5000000000001,208.7" />
+        <EdgeLayout
+          Id="Package\Actualizar DataW.Paths[Nueva salida]"
+          TopLeft="254.7,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174,60.0000000000001"
+              Start="0,0"
+              End="-174,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4968944099379"
+                    Point2="0,20.4968944099379"
+                    Point3="-4,20.4968944099379" />
+                  <mssgle:LineSegment
+                    End="-170,20.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170,20.4968944099379"
+                    Point2="-174,20.4968944099379"
+                    Point3="-174,24.4968944099379" />
+                  <mssgle:LineSegment
+                    End="-174,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-115.288359375,25.4968944099379,56.57671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Actualizar DataW\Comando de OLE DB"
+          TopLeft="216.5,208.7" />
+        <EdgeLayout
+          Id="Package\Actualizar DataW.Paths[Salida de actualizaciones de miembros deducidos]"
+          TopLeft="305.7,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-109.1832421875,21.37548828125,218.366484375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Actualizar DataW\Comando de OLE DB 1"
+          TopLeft="455.1,208.7" />
+        <EdgeLayout
+          Id="Package\Actualizar DataW.Paths[Salida de actualizaciones de atributos variables]"
+          TopLeft="356.7,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="192,60"
+              Start="0,0"
+              End="192,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4968944099379"
+                    Point2="0,20.4968944099379"
+                    Point3="4,20.4968944099379" />
+                  <mssgle:LineSegment
+                    End="188,20.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="188,20.4968944099379"
+                    Point2="192,20.4968944099379"
+                    Point3="192,24.4968944099379" />
+                  <mssgle:LineSegment
+                    End="192,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8.25324218749999,25.4968944099379,208.506484375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Actualizar DataW\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\cargar clientes en intermdias">
     <LayoutInfo>
       <GraphLayout
@@ -2280,11 +3714,11 @@ ORDER BY BIRTH_DATE;</property>
         <NodeLayout
           Size="169.6,41.6"
           Id="Package\cargar clientes en intermdias\stying_customer_W"
-          TopLeft="710.499989941716,155.499998211861" />
+          TopLeft="386.333340986734,154.633331551221" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\cargar clientes en intermdias\sty_customer_R"
-          TopLeft="382.499994382262,157.499997735023" />
+          TopLeft="714.166642927462,148.833331128623" />
         <NodeLayout
           Size="182.4,41.6"
           Id="Package\cargar clientes en intermdias\tipo_cliente_mayorista"
@@ -2307,94 +3741,26 @@ ORDER BY BIRTH_DATE;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20.933314259021,39.4333379189836"
+              EndConnector="20.933314259021,39.433337918984"
               Start="0,0"
-              End="20.933314259021,31.9333379189836">
+              End="20.933314259021,31.933337918984">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.7166689594918" />
+                    End="0,15.716668959492" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.7166689594918"
-                    Point2="0,19.7166689594918"
-                    Point3="4,19.7166689594918" />
+                    Point1="0,15.716668959492"
+                    Point2="0,19.716668959492"
+                    Point3="4,19.716668959492" />
                   <mssgle:LineSegment
-                    End="16.933314259021,19.7166689594918" />
+                    End="16.933314259021,19.716668959492" />
                   <mssgle:CubicBezierSegment
-                    Point1="16.933314259021,19.7166689594918"
-                    Point2="20.933314259021,19.7166689594918"
-                    Point3="20.933314259021,23.7166689594918" />
+                    Point1="16.933314259021,19.716668959492"
+                    Point2="20.933314259021,19.716668959492"
+                    Point3="20.933314259021,23.716668959492" />
                   <mssgle:LineSegment
-                    End="20.933314259021,31.9333379189836" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar clientes en intermdias.Paths[Salida de origen de OLE DB1]"
-          TopLeft="795.299989941716,197.099998211861">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-33.0999999403949,119.899997064471"
-              Start="0,0"
-              End="-33.0999999403949,112.399997064471">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.9499985322357" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,55.9499985322357"
-                    Point2="0,59.9499985322357"
-                    Point3="-4,59.9499985322357" />
-                  <mssgle:LineSegment
-                    End="-29.0999999403949,59.9499985322357" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-29.0999999403949,59.9499985322357"
-                    Point2="-33.0999999403949,59.9499985322357"
-                    Point3="-33.0999999403949,63.9499985322357" />
-                  <mssgle:LineSegment
-                    End="-33.0999999403949,112.399997064471" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar clientes en intermdias.Paths[Salida de origen de OLE DB]"
-          TopLeft="459.299994382262,199.099997735023">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="27.899999716878,120.899997496605"
-              Start="0,0"
-              End="27.899999716878,113.399997496605">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.4499987483025" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.4499987483025"
-                    Point2="0,60.4499987483025"
-                    Point3="4,60.4499987483025" />
-                  <mssgle:LineSegment
-                    End="23.899999716878,60.4499987483025" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23.899999716878,60.4499987483025"
-                    Point2="27.899999716878,60.4499987483025"
-                    Point3="27.899999716878,64.4499987483025" />
-                  <mssgle:LineSegment
-                    End="27.899999716878,113.399997496605" />
+                    End="20.933314259021,31.933337918984" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2463,6 +3829,74 @@ ORDER BY BIRTH_DATE;</property>
                     Point3="75.8666649083298,59.9350264270767" />
                   <mssgle:LineSegment
                     End="75.8666649083298,86.766664648984" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\cargar clientes en intermdias.Paths[Salida de origen de OLE DB]"
+          TopLeft="471.133340986734,196.233331551221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.0666531124056,123.766663680407"
+              Start="0,0"
+              End="16.0666531124056,116.266663680407">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.8833318402035" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.8833318402035"
+                    Point2="0,61.8833318402035"
+                    Point3="4,61.8833318402035" />
+                  <mssgle:LineSegment
+                    End="12.0666531124056,61.8833318402035" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.0666531124056,61.8833318402035"
+                    Point2="16.0666531124056,61.8833318402035"
+                    Point3="16.0666531124056,65.8833318402035" />
+                  <mssgle:LineSegment
+                    End="16.0666531124056,116.266663680407" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\cargar clientes en intermdias.Paths[Salida de origen de OLE DB1]"
+          TopLeft="790.966642927462,190.433331128623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.7666529261408,126.566664147709"
+              Start="0,0"
+              End="-28.7666529261408,119.066664147709">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.2833320738544" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.2833320738544"
+                    Point2="0,63.2833320738544"
+                    Point3="-4,63.2833320738544" />
+                  <mssgle:LineSegment
+                    End="-24.7666529261408,63.2833320738544" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.7666529261408,63.2833320738544"
+                    Point2="-28.7666529261408,63.2833320738544"
+                    Point3="-28.7666529261408,67.2833320738544" />
+                  <mssgle:LineSegment
+                    End="-28.7666529261408,119.066664147709" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2628,6 +4062,80 @@ ORDER BY BIRTH_DATE;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Actualizar DataW\Dimensión de variación lenta">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{DF6F71A3-CAA5-4C61-8D2A-E72D13FF76B3}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Clientes]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[BIRTH_DATE]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;BIRTH_DATE&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[CITY]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CITY&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[CUSTOMER_ID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CUSTOMER_ID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[FULL_NAME]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FULL_NAME&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[STATE]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;STATE&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[Tipo_cliente]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Tipo_cliente&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[ZIPCODE]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ZIPCODE&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insertar destino&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando de OLE DB&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando de OLE DB 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

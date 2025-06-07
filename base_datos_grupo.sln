@@ -9,7 +9,8 @@ Global
 		Development|Default = Development|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D4F81AEC-8299-5C4C-8251-31918897EF82}.Development|Default.Build.0 = ?|?
+		{D4F81AEC-8299-5C4C-8251-31918897EF82}.Development|Default.ActiveCfg = Development
+		{D4F81AEC-8299-5C4C-8251-31918897EF82}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
